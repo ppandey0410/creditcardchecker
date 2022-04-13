@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Credit Card System</title>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <!-- link rel="stylesheet" href="../css/site.css"/ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+    <div id="content_refresh" style="text-align: center;margin:0 auto;width: 100%" th:fragment="content_refresh">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Card Number</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Limit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cardDetail, iStat : ${cardDetails}">
+                <th scope="row" th:text="${cardDetail.getId()}"> </th>
+                <td th:text="${cardDetail.getCardHolderName()}"></td>
+                <td th:text="${cardDetail.getCardNumber()}"></td>
+                <td th:text="0"></td>
+                <td th:text="${cardDetail.getCardLimit()}"></td>
+            </tr>
+            </tbody>
+        </table>
+     </div>
+</div>
+
+</body>
+</html>

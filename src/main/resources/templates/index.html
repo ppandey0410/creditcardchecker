@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Credit Card System</title>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <!-- link rel="stylesheet" href="../css/site.css"/ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col">
+            <ul class="nav nav-tabs mt-5" id="myTabs">
+                <li class="nav-item"><a href="#add" data-toggle="tab" class="nav-link active">Add</a></li>
+                <!--li class="nav-item"><a href="#upload" data-toggle="tab"  class="nav-link">Upload CSV</a></li -->
+            </ul>
+
+            <div class="tab-content pt-3">
+                <div class="tab-pane  active" id="add">
+                    <div class="col-6 mx-auto">
+                        <h2>Card Details </h2>
+                        <form method="POST" th:action="@{/add-card-details}" th:object="${cardDetailsObj}" >
+                            <div class="form-group mt-3">
+                                <label for="Name">Name </label>
+                                <input type="text" name="cardHolderName" class="form-control-file" id="name">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" name="cardNumber" class="form-control-file" id="cardNumber">
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="Limit">Limit</label>
+                                <input type="text" name="cardLimit" class="form-control-file" id="limit">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div id="content_refresh" style="text-align: center;margin:0 auto;width: 100%" th:fragment="content_refresh">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Card Number</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Limit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cardDetail, iStat : ${cardDetails}">
+                <th scope="row" th:text="${cardDetail.getId()}"> </th>
+                <td th:text="${cardDetail.getCardHolderName}"></td>
+                <td th:text="${cardDetail.getCardNumber()}"></td>
+                <td th:text="0"></td>
+                <td th:text="${cardDetail.getCardLimit()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

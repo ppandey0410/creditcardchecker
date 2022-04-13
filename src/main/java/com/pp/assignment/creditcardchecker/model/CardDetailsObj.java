@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CardDetailsObj {
+
     private String cardHolderName;
     private String cardNumber;
     private String cardLimit;
