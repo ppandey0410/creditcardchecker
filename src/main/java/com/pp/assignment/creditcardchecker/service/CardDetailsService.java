@@ -10,16 +10,40 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * CardDetailsService is the service class which exposes methods to save/add new card details
+ * and list all the existing card information.
+ *
+ * @author  Prakash Pandey
+ * @version 1.0
+ * @since   2022-04-14
+ */
 @Service
 public class CardDetailsService {
 
     @Autowired
     private CardDetailsRepository cardDetailsRepository;
 
+    /**
+     * @param cardDetailsObj
+     * @return CardDetails
+     *
+     * @author  Prakash Pandey
+     * @version 1.0
+     * @since   2022-04-14
+     */
     public CardDetails saveCardDetails(CardDetailsObj cardDetailsObj) {
         return cardDetailsRepository.save(getCardDetails(cardDetailsObj));
     }
 
+    /**
+     * @param cardDetailsObj - Object of CardDetailsObj class
+     * @return CardDetails
+     *
+     * @author  Prakash Pandey
+     * @version 1.0
+     * @since   2022-04-14
+     */
     private CardDetails getCardDetails(CardDetailsObj cardDetailsObj) {
         final CardDetails  cardDetails = new CardDetails();
         cardDetails.setCardHolderName(cardDetailsObj.getCardHolderName());
@@ -28,37 +52,25 @@ public class CardDetailsService {
         return cardDetails;
     }
 
-    public List<CardDetails> getCardDetails() {
-        List<CardDetails> cardDetails = cardDetailsRepository.findAll();
-        /*if(!CollectionUtils.isEmpty(cardDetails)) {
-
-            cardDetails =  formateCardNumber(cardDetails);
-        }*/
-        return cardDetails;
-    }
-
     /**
      *
-     * @param cardDetails list of CardDetails
-     * @return list of cardDetails
+     * @return List of CardDetails Objects
+     *
+     * @author  Prakash Pandey
+     * @version 1.0
+     * @since   2022-04-14
      */
-    private List<CardDetails> formateCardNumber(List<CardDetails> cardDetails) {
-        if(!CollectionUtils.isEmpty(cardDetails)) {
-            cardDetails =    cardDetails.stream().map(x -> {
-                        String[] strArray = x.getCardNumber().split("-");
-                        for (int i = 1; i < strArray.length; i++) {
-                            strArray[i] = strArray[i].replaceAll("\\d", "x");
-                        }
-                        x.setCardNumber(String.join("-", strArray));
-                        return x;
-                    }
-            ).collect(Collectors.toList());
-        }
+    public List<CardDetails> getCardDetails() {
+        List<CardDetails> cardDetails = cardDetailsRepository.findAll();
         return cardDetails;
     }
 
+/*
     public List<CardDetails> saveAllCardDetail(List<CardDetails> cardDetails) {
         cardDetailsRepository.saveAll(cardDetails);
         return getCardDetails();
     }
+
+*/
+
 }

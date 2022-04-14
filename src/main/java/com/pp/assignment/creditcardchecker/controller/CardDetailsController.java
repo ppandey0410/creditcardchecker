@@ -14,13 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * CardDetailsController is rest controller for handling rest request.
+ * It takes JSON by default as input and output
+ *
+ * @author  Prakash Pandey
+ * @version 1.0
+ * @since   2022-04-14
+ */
 @RestController
 public class CardDetailsController {
 
     @Autowired
     private CardDetailsService cardDetailsService;
 
-    @PostMapping("/carddetails")
+    /**
+     *
+     * @param cardDetailsObj
+     * @return CardDetails object
+     *
+     */
+    @PostMapping("/card/adddetails")
     public CardDetails saveCardDetails(@RequestBody CardDetailsObj cardDetailsObj) {
         boolean validateCard = LuhnCardValidator.validateCreditCardNumber(cardDetailsObj.getCardNumber());
 
@@ -30,8 +44,12 @@ public class CardDetailsController {
             return new CardDetails();
     }
 
-
-    @GetMapping("/carddetails")
+    /**
+     *
+     * @return CardDetails object list
+     *
+     */
+    @GetMapping("/card/showdetails")
     public List<CardDetails> getCardDetails() {
         return cardDetailsService.getCardDetails();
     }

@@ -1,5 +1,13 @@
 package com.pp.assignment.creditcardchecker.validation;
 
+/**
+ * LuhnCardValidator implements known Luhn Algorithm for validating card number.
+ * Any valid card number should pass this algorithm/test
+ *
+ * @author  Prakash Pandey
+ * @version 1.0
+ * @since   2022-04-14
+ */
 public class LuhnCardValidator {
         public static void main(String[] args) {
             validateCreditCardNumber("12345678903555");
