@@ -30,10 +30,10 @@ public class CardDetailsService {
 
     public List<CardDetails> getCardDetails() {
         List<CardDetails> cardDetails = cardDetailsRepository.findAll();
-        if(!CollectionUtils.isEmpty(cardDetails)) {
+        /*if(!CollectionUtils.isEmpty(cardDetails)) {
 
             cardDetails =  formateCardNumber(cardDetails);
-        }
+        }*/
         return cardDetails;
     }
 

@@ -16,13 +16,11 @@ public class CardDetailsMVCController {
 
     @Autowired
     private CardDetailsService cardDetailsService;
-    //@Autowired private CsvFileProcessorService csvFileProcessorService;
 
     @GetMapping("/")
     public String index() {
         return "index";
     }
-
 
     @GetMapping("/show-card-details")
     public String showCardDetails(Model model) {
@@ -38,19 +36,4 @@ public class CardDetailsMVCController {
         return "redirect:/show-card-details";
     }
 
-    /*
-    @PostMapping("/upload")
-
-    public String uploadCSVFile(@RequestParam("file") MultipartFile file, Model model) {
-
-        // validate file
-        if (file.isEmpty()) {
-            model.addAttribute("message", "Please select a CSV file to upload.");
-            model.addAttribute("status", false);
-        } else {
-            model.addAttribute("bankDetails",csvFileProcessorService.save(file)); ;
-        }
-        return "redirect:/show-bank-details";
-    }
-    */
 }
