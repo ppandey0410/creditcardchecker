@@ -34,7 +34,7 @@ public class CardDetailsController {
      * @return CardDetails object
      *
      */
-    @PostMapping("/card/adddetails")
+    @PostMapping("/card/add")
     public CardDetails saveCardDetails(@RequestBody CardDetailsObj cardDetailsObj) {
         boolean validateCard = LuhnCardValidator.validateCreditCardNumber(cardDetailsObj.getCardNumber());
 
@@ -49,7 +49,7 @@ public class CardDetailsController {
      * @return CardDetails object list
      *
      */
-    @GetMapping("/card/showdetails")
+    @GetMapping("/card/getall")
     public List<CardDetails> getCardDetails() {
         return cardDetailsService.getCardDetails();
     }

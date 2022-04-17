@@ -46,7 +46,7 @@ public class CardDetailsMVCController {
             System.out.println("Errors...");
             System.out.println(bindingResult.getAllErrors());
             model.addAttribute("cardDetailsObj",new CardDetailsObj());
-            return "index";
+            return "redirect:/show-card-details";
         }
         cardDetailsService.saveCardDetails(cardDetailsObj);
         return "redirect:/show-card-details";

@@ -48,7 +48,7 @@ class CardDetailsControllerTest {
         cardDetailsObj.setCardNumber("1234123412341234");
         cardDetailsObj.setCardLimit("1200");
         Mockito.when(cardDetailsService.saveCardDetails(cardDetailsObj)).thenReturn(getDetails());
-        mockMvc.perform(post("/carddetails").contentType(MediaType.APPLICATION_JSON).content(json))
+        mockMvc.perform(post("/card/add").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().isOk());
     }
 
@@ -56,7 +56,7 @@ class CardDetailsControllerTest {
     void getCardDetails() throws Exception {
         List<CardDetails> list = (List<CardDetails>) Arrays.asList(getDetails());
         Mockito.when(cardDetailsService.getCardDetails()).thenReturn(list);
-        mockMvc.perform(get("/carddetails"))
+        mockMvc.perform(get("/card/getall"))
                 .andExpect(status().isOk());
 
     }
