@@ -1,13 +1,13 @@
 # Credit Card Checker Application
 
 
-###Overview 
+### Overview 
 
 This is small full stack application for a credit card provider. 
 It allows one to add new credit card accounts and view them as a list. 
 The backend has both ways i.e. using rest api as well as mvc controller.
 
-###Tech Stack
+### Tech Stack
 
 * Spring Boot
 * Thymeleaf as Fronend
